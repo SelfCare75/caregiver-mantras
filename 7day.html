@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Caregiver 7-Day Solutions Deck</title>
+<meta name="description" content="Seven interactive flipcards for caregivers. One clear solution each day."/>
+<style>
+  :root{
+    --blue:#0ea5e9;
+    --blue2:#0284c7;
+    --ink:#0b1220;
+    --card:#ffffff;
+    --page:#f5f7fb;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0; font-family:system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif; background:var(--page); color:var(--ink)}
+  .wrap{max-width:1100px; margin:28px auto; padding:16px}
+  h1{margin:0 0 6px 0; font-size:28px; letter-spacing:.2px}
+  .sub{margin:0 0 18px 0; color:#334155}
+  .grid{display:grid; gap:16px; grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+  .card{perspective:1200px; min-height:260px}
+  .card-inner{position:relative; width:100%; height:100%; transition:transform .5s ease; transform-style:preserve-3d; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,.12); background:#fff}
+  .card.flip .card-inner{transform:rotateY(180deg)}
+  .face{position:absolute; inset:0; backface-visibility:hidden; overflow:hidden; border-radius:20px; display:flex; flex-direction:column; justify-content:center}
+  .front{color:#fff; background:linear-gradient(120deg,var(--blue2),var(--blue));}
+  .front .front-wrap{display:flex; flex-direction:column; align-items:center; justify-content:center; padding:24px 18px; gap:10px; text-align:center; min-height:240px}
+  .day-big{font-size:34px; font-weight:900; letter-spacing:.5px}
+  .title-front{font-weight:800; font-size:16px; opacity:.95}
+  .logo-top{max-height:42px; max-width:180px; object-fit:contain; filter:drop-shadow(0 1px 2px rgba(0,0,0,.15)); margin-bottom:6px}
+  .logo-fallback{display:none; font-weight:900; letter-spacing:.5px}
+  .back{transform:rotateY(180deg); background:
+    linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,.85)),
+    linear-gradient(120deg,var(--blue2),var(--blue));
+  }
+  .back .body{padding:20px 18px 66px 18px}
+  .tag{font-size:12px; color:#0b1220; opacity:.75; font-weight:800; text-transform:uppercase; letter-spacing:.4px}
+  .title{font-weight:900; font-size:18px; margin:2px 0 6px 0}
+  .mantra{font-size:18px; line-height:1.35; font-weight:700; margin:6px 0 0 0; color:#0b1220}
+  .list{margin:10px 0 0 16px; padding:0}
+  .list li{margin:4px 0; font-size:14px}
+  .btns{position:absolute; left:18px; right:18px; bottom:12px; display:flex; gap:10px; flex-wrap:wrap}
+  .btn{display:inline-block; border:none; padding:10px 12px; border-radius:12px; cursor:pointer; background:#111827; color:#fff; font-weight:800; font-size:14px; text-decoration:none}
+  .hint{position:absolute; right:12px; bottom:10px; font-size:12px; color:#111827}
+  .logo-bottom{position:absolute; left:18px; right:18px; bottom:12px; display:flex; justify-content:flex-end; align-items:center; pointer-events:none}
+  .logo{max-height:28px; max-width:140px; object-fit:contain; filter:drop-shadow(0 1px 2px rgba(0,0,0,.15))}
+  .logo-text{display:none; font-size:12px; font-weight:900; color:#0b1220; background:rgba(255,255,255,.6); padding:2px 6px; border-radius:8px}
+  .note{margin-top:10px; font-size:12px; color:#111827}
+  @media (hover:hover){
+    .card:hover .card-inner{box-shadow:0 14px 36px rgba(0,0,0,.16)}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Caregiver 7-Day Solutions Deck</h1>
+  <p class="sub">Tap a card to flip. Tap Play for a short voice cue with a soft chime.</p>
+  <div id="grid" class="grid"></div>
+  <p class="note">Place a file named <strong>logo.png</strong> in the same folder to show .</p>
+</div>
+
+<script>
+const LOGO_URL = "logo.png";
+
+const CARDS = [
+  {
+    day:"Directions",
+    tag:"Directions",
+    title:"How to Use These Cards",
+    bullets:[
+      "Secure a small journal.",
+      "Each day, flip a new card.",
+      "Read the solution slowly.",
+      "Do the practice for 2 to 5 minutes.",
+      "Write one sentence about how you feel in your journal.",
+      "Use headphones if you want privacy."
+    ],
+    audio:"Directions. Secure a small journal. Flip one card each day. Practice for two to five minutes. Write one sentence about how you feel."
+  },
+  {
+    day:"Day 1",
+    tag:"Emotional Exhaustion",
+    title:"Emotional Reset",
+    mantra:"Pause for 60 seconds before you help.",
+    bullets:[
+      "Hand on chest. Inhale 4. Exhale 6. Repeat 5 times.",
+      "Notice the softening in your body.",
+      "Write one emotion that eased."
+    ],
+    audio:"Day one. Pause for sixty seconds before you help. Inhale four. Exhale six. Repeat five times."
+  },
+  {
+    day:"Day 2",
+    tag:"Self Neglect",
+    title:"One Nonnegotiable",
+    mantra:"Choose one basic act for you today.",
+    bullets:[
+      "Pick one: water, five minute walk, stretch, or a real meal.",
+      "Put it on your phone calendar.",
+      "Write how your body feels after."
+    ],
+    audio:"Day two. Choose one basic act for you today. Water, a five minute walk, a stretch, or a real meal."
+  },
+  {
+    day:"Day 3",
+    tag:"Physical Fatigue",
+    title:"Body Recharge",
+    mantra:"Move gently for one minute.",
+    bullets:[
+      "Stand. Roll shoulders 5 times. Neck circles 3 each way.",
+      "Inhale reach up. Exhale fold. Do 3 cycles.",
+      "Write one word that describes your energy now."
+    ],
+    audio:"Day three. Move gently for one minute. Roll shoulders. Circle your neck. Inhale reach up. Exhale fold."
+  },
+  {
+    day:"Day 4",
+    tag:"Work and Life Balance",
+    title:"One Clear Boundary",
+    mantra:"Say: Not now. I will help at a set time.",
+    bullets:[
+      "Choose a time. Speak it out loud.",
+      "Tell one person your plan.",
+      "Write one boundary you set today."
+    ],
+    audio:"Day four. Set one clear boundary. Not now. I will help at a set time."
+  },
+  {
+    day:"Day 5",
+    tag:"Quiet Time",
+    title:"Quiet Minute",
+    mantra:"Give yourself one quiet minute.",
+    bullets:[
+      "Sit. Close your eyes. Box breathe 4, 4, 4, 4 for one minute.",
+      "If thoughts come, return to the count.",
+      "Write one word for your mood."
+    ],
+    audio:"Day five. One quiet minute. Breathe in four. Hold four. Out four. Hold four."
+  },
+  {
+    day:"Day 6",
+    tag:"Loneliness",
+    title:"Reach Out",
+    mantra:"Send one text to connect.",
+    bullets:[
+      "Type: Thinking of you. How are you today?",
+      "If you prefer, leave a short voice note.",
+      "Write the name you reached out to."
+    ],
+    audio:"Day six. Reach out. Send one text to connect. Thinking of you. How are you today?"
+  },
+  {
+    day:"Day 7",
+    tag:"Reflection",
+    title:"Week Review",
+    mantra:"Scan your journal. Circle one win.",
+    bullets:[
+      "Pick one habit to keep next week.",
+      "Tell one person your plan.",
+      "Write the habit you will keep."
+    ],
+    audio:"Day seven. Review your week. Circle one win. Pick one habit to keep."
+  },
+  {
+    day:"Contact",
+    tag:"Support",
+    title:"You Are Supported",
+    bullets:[
+      "Resources: <a href='#' target='_blank' rel='noopener'>your link here</a>",
+      "Email: <a href='mailto:you@example.com'>you@example.com</a>",
+      "Caregiver group: <a href='#' target='_blank' rel='noopener'>group link</a>",
+      "One small step daily keeps you grounded."
+    ],
+    audio:"You are supported. Visit your resources link or email for help. One small step each day."
+  }
+];
+
+// Build cards
+const grid = document.getElementById('grid');
+CARDS.forEach((c, i) => {
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.innerHTML = `
+    <div class="card-inner">
+      <div class="face front" role="button" aria-label="Flip card ${i+1}">
+        <div class="front-wrap">
+          <img class="logo-top" src="${LOGO_URL}" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <div class="logo-fallback"></div>
+          <div class="day-big">${c.day}</div>
+          <div class="title-front">${c.title || ''}</div>
+        </div>
+      </div>
+      <div class="face back">
+        <div class="body">
+          <div class="tag">${c.tag||''}</div>
+          <div class="title">${c.title||''}</div>
+          ${c.mantra?`<div class="mantra">${c.mantra}</div>`:''}
+          ${Array.isArray(c.bullets)?`<ul class="list">`+c.bullets.map(b=>`<li>${b}</li>`).join('')+`</ul>`:''}
+        </div>
+        <div class="btns">
+          <button class="btn" data-action="play">Play</button>
+          <button class="btn" data-action="stop">Stop</button>
+          <span class="hint">Tap card to flip</span>
+        </div>
+        <div class="logo-bottom">
+          <img class="logo" src="${LOGO_URL}" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+          <span class="logo-text"></span>
+        </div>
+      </div>
+    </div>
+  `;
+  card.addEventListener('click', (e)=>{
+    const isBtn = e.target.closest('.btn');
+    if(isBtn) return;
+    card.classList.toggle('flip');
+  });
+  card.querySelectorAll('.btn').forEach(btn=>{
+    btn.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      const action = btn.getAttribute('data-action');
+      if(action==='play'){ playCardAudio(c); }
+      if(action==='stop'){ stopAudio(); }
+    });
+  });
+  grid.appendChild(card);
+});
+
+// Audio
+let synth = window.speechSynthesis;
+let speaking = false;
+let audioCtx = null;
+
+function softChime(){
+  try{
+    audioCtx = audioCtx || new (window.AudioContext||window.webkitAudioContext)();
+    const o1 = audioCtx.createOscillator();
+    const g1 = audioCtx.createGain();
+    o1.frequency.value = 880;
+    g1.gain.value = 0.0001;
+    o1.connect(g1).connect(audioCtx.destination);
+    o1.start();
+    g1.gain.exponentialRampToValueAtTime(0.1, audioCtx.currentTime+0.02);
+    g1.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime+0.6);
+    o1.stop(audioCtx.currentTime+0.62);
+  }catch(e){}
+}
+
+function stopAudio(){
+  if(speaking && synth) synth.cancel();
+  speaking = false;
+}
+
+function playCardAudio(card){
+  stopAudio();
+  softChime();
+  const text = card.audio || [card.title, card.mantra].filter(Boolean).join('. ');
+  if(!text) return;
+  const utter = new SpeechSynthesisUtterance(text);
+  utter.rate = 0.85;
+  utter.pitch = 1.0;
+  const voices = synth.getVoices();
+  const prefer = voices.find(v=>/female|Samantha|Google US English/gim.test(v.name)) || voices[0];
+  if(prefer) utter.voice = prefer;
+  speaking = true;
+  utter.onend = ()=>{ speaking = false; };
+  synth.speak(utter);
+}
+</script>
+</body>
+</html>
