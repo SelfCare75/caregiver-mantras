@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Caregiver 7-Day Solutions Deck</title>
+<style>
+  :root{--blue:#0ea5e9;--blue2:#0284c7;--ink:#0b1220;--page:#f5f7fb}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--page);color:var(--ink)}
+  .wrap{max-width:1100px;margin:28px auto;padding:16px}
+  h1{margin:0 0 6px 0;font-size:28px}
+  .sub{margin:0 18px 18px 0;color:#334155}
+  .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+  .card{perspective:1200px;min-height:260px}
+  .card-inner{position:relative;width:100%;height:100%;transition:transform .5s ease;transform-style:preserve-3d;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,.12);background:#fff}
+  .card.flip .card-inner{transform:rotateY(180deg)}
+  .face{position:absolute;inset:0;backface-visibility:hidden;border-radius:20px;display:flex;flex-direction:column;justify-content:center}
+  .front{color:#fff;background:linear-gradient(120deg,var(--blue2),var(--blue))}
+  .front .front-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 18px;gap:10px;text-align:center;min-height:240px}
+  .day-big{font-size:34px;font-weight:900}
+  .title-front{font-weight:800;font-size:16px;opacity:.95}
+  .back{transform:rotateY(180deg);background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,.9)),linear-gradient(120deg,var(--blue2),var(--blue))}
+  .back .body{padding:20px 18px 66px 18px}
+  .tag{font-size:12px;color:#0b1220;opacity:.8;font-weight:800;text-transform:uppercase;letter-spacing:.4px}
+  .title{font-weight:900;font-size:18px;margin:2px 0 6px 0}
+  .mantra{font-size:18px;line-height:1.35;font-weight:700;margin:6px 0 0 0;color:#0b1220}
+  .list{margin:10px 0 0 16px;padding:0}
+  .list li{margin:4px 0;font-size:14px}
+  .btns{position:absolute;left:18px;right:18px;bottom:12px;display:flex;gap:10px;flex-wrap:wrap}
+  .btn{display:inline-block;border:none;padding:10px 12px;border-radius:12px;cursor:pointer;background:#111827;color:#fff;font-weight:800;font-size:14px}
+  .hint{position:absolute;right:12px;bottom:10px;font-size:12px;color:#111827}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Caregiver 7-Day Solutions Deck</h1>
+  <p class="sub">Tap a card to flip. Tap Play for a short voice cue with a soft chime.</p>
+  <div class="grid">
+
+    <!-- Card 1 Directions -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="face front">
+          <div class="front-wrap">
+            <div class="day-big">Directions</div>
+            <div class="title-front">How to Use These Cards</div>
+          </div>
+        </div>
+        <div class="face back">
+          <div class="body">
+            <div class="tag">Directions</div>
+            <div class="title">How to Use These Cards</div>
+            <ul class="list">
+              <li>Secure a small journal.</li>
+              <li>Each day, flip a new card.</li>
+              <li>Read the solution slowly.</li>
+              <li>Do the practice for 2 to 5 minutes.</li>
+              <li>Write one sentence about how you feel in your journal.</li>
+              <li>Use headphones if you want privacy.</li>
+            </ul>
+          </div>
+          <div class="btns">
+            <button class="btn" data-audio="Directions. Secure a small journal. Flip one card each day. Practice for two to five minutes. Write one sentence about how you feel.">Play</button>
+            <button class="btn" data-stop>Stop</button>
+            <span class="hint">Tap card to flip</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 1 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="face front">
+          <div class="front-wrap">
+            <div class="day-big">Day 1</div>
+            <div class="title-front">Emotional Reset</div>
+          </div>
+        </div>
+        <div class="face back">
+          <div class="body">
+            <div class="tag">Emotional Exhaustion</div>
+            <div class="title">Emotional Reset</div>
+            <div class="mantra">Pause for 60 seconds before you help.</div>
+            <ul class="list">
+              <li>Hand on chest. Inhale 4. Exhale 6. Repeat 5 times.</li>
+              <li>Notice the softening in your body.</li>
+              <li>Write one emotion that eased.</li>
+            </ul>
+          </div>
+          <div class="btns">
+            <button class="btn" data-audio="Day one. Pause for sixty seconds before you help. Inhale four, exhale six, repeat five times.">Play</button>
+            <button class="btn" data-stop>Stop</button>
+            <span class="hint">Tap card to flip</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 2 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="face front">
+          <div class="front-wrap">
+            <div class="day-big">Day 2</div>
+            <div class="title-front">One Nonnegotiable</div>
+          </div>
+        </div>
+        <div class="face back">
+          <div class="body">
+            <div class="tag">Self Neglect</div>
+            <div class="title">One Nonnegotiable</div>
+            <div class="mantra">Choose one basic act for you today.</div>
+            <ul class="list">
+              <li>Pick one, water, five minute walk, stretch, or a real meal.</li>
+              <li>Add it to your phone calendar.</li>
+              <li>Write how your body feels after.</li>
+            </ul>
+          </div>
+          <div class="btns">
+            <button class="btn" data-audio="Day two. Choose one basic act for you today. Water, a five minute walk, a stretch, or a real meal.">Play</button>
+            <button class="btn" data-stop>Stop</button>
+            <span class="hint">Tap card to flip</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 3 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="face front">
+          <div class="front-wrap">
+            <div class="day-big">Day 3</div>
+            <div class="title-front">Body Recharge</div>
+          </div>
+        </div>
+        <div class="face back">
+          <div class="body">
+            <div class="tag">Physical Fatigue</div>
+            <div class="title">Body Recharge</div>
+            <div class="mantra">Move gently for one minute.</div>
+            <ul class="list">
+              <li>Stand. Roll shoulders 5 times. Neck circles 3 each way.</li>
+              <li>Inhale reach up. Exhale fold. Do 3 cycles.</li>
+              <li>Write one word for your energy now.</li>
+            </ul>
+          </div>
+          <div class="btns">
+            <button class="btn" data-audio="Day three. Move gently for one minute. Roll shoulders. Circle your neck. Inhale reach up. Exhale fold.">Play</button>
+            <button class="btn" data-stop>Stop</button>
+            <span class="hint">Tap card to flip</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 4 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="face front">
+          <div class="front-wrap">
+            <div class="day-big">Day 4</div>
+            <div class="title-front">One Clear Boundary</div>
+          </div>
+        </div>
+        <div class="face back">
+          <div class="body">
+            <div class="tag">Work and Life Balance</div>
+            <div class="title">One Clear Boundary</div>
+            <div class="mantra">Say, Not now. I will help at a set time.</div>
+            <ul class="list">
+              <li>Choose a time. Speak it out loud.</li>
+              <li>Tell one person your plan.</li>
+              <li>Write one boundary you set today.</li>
+            </ul>
+          </div>
+          <div class="btns">
+            <button class="btn" data-audio="Day four. Set one clear boundary. Not now. I will help at a set time.">Play</button>
+            <button class="btn" data-stop>Stop</button>
+            <span class="hint">Tap card to flip</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 5 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="face front">
+          <div class="front-wrap">
+            <div class="day-big">Day 5</div>
+            <div class="title-front">Quiet Minute</div>
+          </div>
+        </div>
+        <div class="face back">
+          <div class="body">
+            <div class="tag">Quiet Time</div>
+            <div class="title">Quiet Minute</div>
+            <div class="mantra">Give yourself one quiet minute.</div>
+            <ul class="list">
+              <li>Box breathe 4, 4, 4, 4 for one minute.</li>
+              <li>If thoughts come, return to the count.</li>
+              <li>Write one word for your mood.</li>
+            </ul>
+          </div>
+          <div class="btns">
+            <button class="btn" data-audio="Day five. One quiet minute. Breathe in four. Hold four. Out four. Hold four.">Play</button>
+            <button class="btn" data-stop>Stop</button>
+            <span class="hint">Tap card to flip</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 6 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="face front">
+          <div class="front-wrap">
+            <div class="day-big">Day 6</div>
+            <div class="title-front">Reach Out</div>
+          </div>
+        </div>
+        <div class="face back">
+          <div class="body">
+            <div class="tag">Loneliness</div>
+            <div class="title">Reach Out</div>
+            <div class="mantra">Send one text to connect.</div>
+            <ul class="list">
+              <li>Type, Thinking of you. How are you today?</li>
+              <li>Or leave a short voice note.</li>
+              <li>Write the name you reached out to.</li>
+            </ul>
+          </div>
+          <div class="btns">
+            <button class="btn" data-audio="Day six. Reach out. Send one text to connect. Thinking of you. How are you today?">Play</button>
+            <button class="btn" data-stop>Stop</button>
+            <span class="hint">Tap card to flip</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 7 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="face front">
+          <div class="front-wrap">
+            <div class="day-big">Day 7</div>
+            <div class="title-front">Week Review</div>
+          </div>
+        </div>
+        <div class="face back">
+          <div class="body">
+            <div class="tag">Reflection</div>
+            <div class="title">Week Review</div>
+            <div class="mantra">Scan your journal. Circle one win.</div>
+            <ul class="list">
+              <li>Pick one habit to keep next week.</li>
+              <li>Tell one person your plan.</li>
+              <li>Write the habit you will keep.</li>
+            </ul>
+          </div>
+          <div class="btns">
+            <button class="btn" data-audio="Day seven. Review your week. Circle one win. Pick one habit to keep.">Play</button>
+            <button class="btn" data-stop>Stop</button>
+            <span class="hint">Tap card to flip</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="face front">
+          <div class="front-wrap">
+            <div class="day-big">Contact</div>
+            <div class="title-front">You Are Supported</div>
+          </div>
+        </div>
+        <div class="face back">
+          <div class="body">
+            <div class="tag">Support</div>
+            <div class="title">You Are Supported</div>
+            <ul class="list">
+              <li>Resources: <a href="https://beacons.ai/selfcarementors" target="_blank" rel="noopener">Visit my store</a></li>
+              <li>Caregiver group: <a href="https://www.facebook.com/groups/elearntoexcel" target="_blank" rel="noopener">Join our Facebook group</a></li>
+              <li>One small step daily keeps you grounded.</li>
+            </ul>
+          </div>
+          <div class="btns">
+            <button class="btn" data-audio="You are supported. Visit my store or join our Facebook group. One small step each day.">Play</button>
+            <button class="btn" data-stop>Stop</button>
+            <span class="hint">Tap card to flip</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// Flip behavior
+document.querySelectorAll('.card').forEach(card=>{
+  card.addEventListener('click', e=>{
+    if(e.target.closest('.btn')) return;
+    card.classList.toggle('flip');
+  });
+});
+
+// Simple audio cue + voice
+let synth = window.speechSynthesis;
+let speaking = false;
+let audioCtx = null;
+
+function softChime(){
+  try{
+    audioCtx = audioCtx || new (window.AudioContext||window.webkitAudioContext)();
+    const o = audioCtx.createOscillator();
+    const g = audioCtx.createGain();
+    o.frequency.value = 880;
+    g.gain.value = 0.0001;
+    o.connect(g).connect(audioCtx.destination);
+    o.start();
+    g.gain.exponentialRampToValueAtTime(0.1, audioCtx.currentTime+0.02);
+    g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime+0.6);
+    o.stop(audioCtx.currentTime+0.62);
+  }catch(e){}
+}
+
+function stopSpeak(){
+  if(speaking && synth) synth.cancel();
+  speaking = false;
+}
+
+document.querySelectorAll('[data-audio]').forEach(btn=>{
+  btn.addEventListener('click', e=>{
+    e.stopPropagation();
+    stopSpeak();
+    softChime();
+    const text = btn.getAttribute('data-audio') || '';
+    const u = new SpeechSynthesisUtterance(text);
+    u.rate = 0.85;
+    u.pitch = 1.0;
+    const voices = synth.getVoices();
+    const prefer = voices.find(v=>/female|Samantha|Google US English/i.test(v.name)) || voices[0];
+    if(prefer) u.voice = prefer;
+    speaking = true;
+    u.onend = ()=>{ speaking = false; };
+    synth.speak(u);
+  });
+});
+
+document.querySelectorAll('[data-stop]').forEach(btn=>{
+  btn.addEventListener('click', e=>{
+    e.stopPropagation();
+    stopSpeak();
+  });
+});
+</script>
+</body>
+</html>
